@@ -12,6 +12,7 @@ using Students_Announcement.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Students_Announcements.Models;
 
 namespace Students_Announcement
 {
