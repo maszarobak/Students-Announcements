@@ -66,7 +66,7 @@ namespace Students_Announcement
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Announcements}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
