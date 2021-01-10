@@ -11,7 +11,7 @@ using Students_Announcements.Models;
 
 namespace Students_Announcement.Controllers
 {
-
+    [Authorize]
     public class AnnouncementsController : Controller
     {
         private readonly AnnouncementContext _context;
@@ -62,6 +62,10 @@ namespace Students_Announcement.Controllers
             {
                 _context.Add(announcement);
                 await _context.SaveChangesAsync();
+               // return RedirectToAction(nameof(Index));
+
+
+                TempData["Info"] = "Dodano ogloszenie: " + announcement.tytul; // do końca żądania - również przekierowania
                 return RedirectToAction(nameof(Index));
             }
             return View(announcement);
