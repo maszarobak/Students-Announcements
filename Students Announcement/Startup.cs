@@ -64,18 +64,10 @@ namespace Students_Announcement
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                  name: "Announcements",
-                  pattern: "ogloszenia/{id?}/{action}",
-                  defaults: new
-                  {
-                      controller = "Announcements",
-                      action = "Datails"
-                  });
-
+              
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Announcements}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
             app.UseStatusCodePagesWithRedirects("/ogloszenia/pl/");
