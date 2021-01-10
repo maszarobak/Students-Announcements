@@ -3,52 +3,108 @@
 @{
     ViewData["Title"] = "Details";
 }
+<style type="text/css">
+    body {
+        background-color: bisque;
+    }
 
-<h1>Details</h1>
+    h1 {
+        font-style: italic;
+    }
 
-<div>
-    <h4>Announcement</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.uczelnia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.uczelnia)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.wydzial)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.wydzial)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.autor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.autor)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.tytul)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.tytul)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.kategoria)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.kategoria)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.opis)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.opis)
-        </dd>
-    </dl>
+    .det {
+        width: 400px;
+        height: 450px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    .create_btn {
+        padding: 5px;
+        box-shadow: 3px 3px 25px 1px rgba(0,0,0,0.75);
+        background-color: whitesmoke;
+        border: none;
+        border-radius: 10px;
+        color: black;
+        width: 100px;
+        height: 50px;
+        text-align: center;
+    }
+
+        .create_btn a {
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+
+            .create_btn a:hover {
+                color: white;
+            }
+
+        .create_btn:hover {
+            background-color: brown;
+            color: white;
+        }
+
+    a {
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: none;
+        color: black;
+    }
+
+        a:hover {
+            color: brown;
+        }
+</style>
+<h1>Szczegóły</h1>
+<div class="det">
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.uczelnia)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.uczelnia)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.wydzial)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.wydzial)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.autor)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.autor)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.tytul)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.tytul)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.kategoria)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.kategoria)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.opis)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.opis)
+            </dd>
+        </dl>
+    </div>
+
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Edit" class="create_btn" asp-route-id="@Model.id">Edytuj</a> |
+        <a asp-action="Index">Powrót do listy ogłoszeń</a>
+    </div>

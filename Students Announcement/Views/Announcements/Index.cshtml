@@ -3,11 +3,67 @@
 @{
     ViewData["Title"] = "Ogłoszenia";
 }
+<style type="text/css">
+    body {
+        background-color: bisque;
+    }
 
-<h1>Index</h1>
+    h1 {
+        font-style: italic;
+        text-align: center;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
+    .create_btn {
+        margin-top: 20px;
+        box-shadow: 3px 3px 25px 1px rgba(0,0,0,0.75);
+        background-color: whitesmoke;
+        border: none;
+        border-radius: 10px;
+        color: black;
+        width: 100px;
+        height: 50px;
+        text-align: center;
+    }
+
+        .create_btn a {
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+
+            .create_btn a:hover {
+                color: white;
+            }
+
+        .create_btn:hover {
+            background-color: brown;
+            color: white;
+        }
+
+    tbody {
+        background-color: white;
+    }
+
+    thead {
+        background-color: brown;
+        color: white;
+    }
+
+    .link_click {
+        color: black;
+        font-style: italic;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .link_click:hover {
+            color: brown;
+        }
+</style>
+<h1>Dostępne ogłoszenia</h1>
+
+<p class="create_btn">
+    <a asp-action="Create">Dodaj ogłoszenie</a>
 </p>
 
 <table class="table">
@@ -56,9 +112,9 @@
                 @Html.DisplayFor(modelItem => item.opis)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a asp-action="Edit" class="link_click" asp-route-id="@item.id">Edytuj</a> |
+                <a asp-action="Details" class="link_click" asp-route-id="@item.id">Szczegóły</a> |
+                <a asp-action="Delete" class="link_click" asp-route-id="@item.id">Usuń</a>
             </td>
         </tr>
 }

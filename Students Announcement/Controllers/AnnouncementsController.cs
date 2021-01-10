@@ -11,7 +11,7 @@ using Students_Announcements.Models;
 
 namespace Students_Announcement.Controllers
 {
-    [Authorize]
+
     public class AnnouncementsController : Controller
     {
         private readonly AnnouncementContext _context;
@@ -48,15 +48,12 @@ namespace Students_Announcement.Controllers
         
     
 
-        // GET: Announcements/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Announcements/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id,uczelnia,wydzial,autor,tytul,kategoria,opis")] Announcement announcement)
@@ -70,7 +67,6 @@ namespace Students_Announcement.Controllers
             return View(announcement);
         }
 
-        // GET: Announcements/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,9 +82,7 @@ namespace Students_Announcement.Controllers
             return View(announcement);
         }
 
-        // POST: Announcements/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,uczelnia,wydzial,autor,tytul,kategoria,opis")] Announcement announcement)
@@ -121,7 +115,6 @@ namespace Students_Announcement.Controllers
             return View(announcement);
         }
 
-        // GET: Announcements/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,7 +132,6 @@ namespace Students_Announcement.Controllers
             return View(announcement);
         }
 
-        // POST: Announcements/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
