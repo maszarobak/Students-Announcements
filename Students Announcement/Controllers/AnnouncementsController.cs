@@ -11,7 +11,7 @@ using Students_Announcements.Models;
 
 namespace Students_Announcement.Controllers
 {
-
+    [Authorize]
     public class AnnouncementsController : Controller
     {
         private readonly AnnouncementContext _context;
