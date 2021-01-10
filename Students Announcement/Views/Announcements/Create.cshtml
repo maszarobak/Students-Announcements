@@ -45,6 +45,12 @@
 
 
 <h1>Stwórz nowe ogłoszenie</h1>
+@if (TempData["info"] != null)
+{
+    <p class="alert-success">
+        Zmiany - @TempData["info"]
+    </p>
+}
 
 <hr />
 <div class="row">

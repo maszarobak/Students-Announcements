@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Students_Announcements.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Students_Announcement
 {
@@ -66,11 +67,11 @@ namespace Students_Announcement
             {
                 endpoints.MapControllerRoute(
                   name: "Announcements",
-                  pattern: "ogloszenia/{id?}/{action}",
+                  pattern: "ogloszenia/{id}/{action}",
                   defaults: new
                   {
                       controller = "Announcements",
-                      action = "Datails"
+                     
                   });
 
                 endpoints.MapControllerRoute(
@@ -78,7 +79,12 @@ namespace Students_Announcement
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            app.UseStatusCodePagesWithRedirects("/ogloszenia/pl/");
+            app.UseStatusCodePages(async context =>
+            {
+                context.HttpContext.Response.ContentType = "text/html";
+                await context.HttpContext.Response.WriteAsync("<b>B³¹d</b>: " + (context.HttpContext.Response.StatusCode == 404 ? "brak strony": context.HttpContext.Response.StatusCode.ToString()));
+            });
+            app.UseStatusCodePagesWithRedirects("/ogloszenia/Details/pl/");
         }
     }
 }

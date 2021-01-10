@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Students_Announcement.Models;
 using Students_Announcements.Models;
+
 
 namespace Students_Announcement.Controllers
 {
@@ -21,7 +23,7 @@ namespace Students_Announcement.Controllers
             _context = context;
         }
 
-       
+        [ResponseCache(Duration = 60)]
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -65,8 +67,9 @@ namespace Students_Announcement.Controllers
                // return RedirectToAction(nameof(Index));
 
 
-                TempData["Info"] = "Dodano ogloszenie: " + announcement.tytul; // do końca żądania - również przekierowania
-                return RedirectToAction(nameof(Index));
+                TempData["Info"] = "Dodano ogloszenie: " + announcement.tytul;
+               
+                return RedirectToAction(nameof(Create));
             }
             return View(announcement);
         }
@@ -87,7 +90,7 @@ namespace Students_Announcement.Controllers
         }
 
        
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,uczelnia,wydzial,autor,tytul,kategoria,opis")] Announcement announcement)
         {
