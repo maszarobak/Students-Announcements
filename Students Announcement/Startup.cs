@@ -65,26 +65,18 @@ namespace Students_Announcement
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                  name: "Announcements",
-                  pattern: "ogloszenia/{id}/{action}",
-                  defaults: new
-                  {
-                      controller = "Announcements",
-                     
-                  });
-
+                
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Announcements}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
             app.UseStatusCodePages(async context =>
             {
                 context.HttpContext.Response.ContentType = "text/html";
-                await context.HttpContext.Response.WriteAsync("<b>B³¹d</b>: " + (context.HttpContext.Response.StatusCode == 404 ? "brak strony": context.HttpContext.Response.StatusCode.ToString()));
+                await context.HttpContext.Response.WriteAsync("<b>Blad</b>: " + (context.HttpContext.Response.StatusCode == 404 ? "brak strony" : context.HttpContext.Response.StatusCode.ToString()));
             });
-            app.UseStatusCodePagesWithRedirects("/ogloszenia/Details/pl/");
         }
     }
 }

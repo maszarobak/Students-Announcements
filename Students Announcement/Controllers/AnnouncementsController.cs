@@ -30,7 +30,7 @@ namespace Students_Announcement.Controllers
             return View(await _context.Announcements.ToListAsync());
         }
 
-       
+        [ResponseCache(Duration = 60)]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -62,10 +62,16 @@ namespace Students_Announcement.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(announcement);
-                await _context.SaveChangesAsync();
-               // return RedirectToAction(nameof(Index));
-
+                try
+                {
+                    _context.Add(announcement);
+                    await _context.SaveChangesAsync();
+                    // return RedirectToAction(nameof(Index));
+                }
+                catch(DbUpdateConcurrencyException ex)
+                {
+                    throw ex;
+                }
 
                 TempData["Info"] = "Dodano ogloszenie: " + announcement.tytul;
                
