@@ -22,24 +22,8 @@ namespace Students_Announcement.Controllers
         // GET: Announcements
         public async Task<IActionResult> Index(string sortOrder)
         {
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["AutorSortParm"] = String.IsNullOrEmpty(sortOrder) ? "autor_desc" : "";
-
-            var announcement = from s in _context.Announcements
-                               select s;
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    announcement = announcement.OrderByDescending(s => s.uczelnia);
-                    break;
-                case "autor_desc":
-                    announcement = announcement.OrderByDescending(s => s.autor);
-                    break;
-                default:
-                    announcement = announcement.OrderBy(s => s.uczelnia);
-                    break;
-            }
-            return View(await _context.Announcements.AsNoTracking().ToListAsync());
+            
+            return View(await _context.Announcements.ToListAsync());
         }
 
         // GET: Announcements/Details/5
