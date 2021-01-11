@@ -12,7 +12,17 @@
         font-style: italic;
         text-align: center;
     }
-
+    .create_btn2 {
+        margin-top: 20px;
+        box-shadow: 3px 3px 25px 1px rgba(0,0,0,0.75);
+        background-color: whitesmoke;
+        border: none;
+        border-radius: 10px;
+        color: black;
+        width: 70px;
+        height: 30px;
+        text-align: center;
+    }
     .create_btn {
         margin-top: 20px;
         box-shadow: 3px 3px 25px 1px rgba(0,0,0,0.75);
@@ -62,10 +72,21 @@
 </style>
 <h1>Dostępne ogłoszenia</h1>
 
+
 <p class="create_btn">
     <a asp-action="Create">Dodaj ogłoszenie</a>
-</p>
 
+</p>
+<p>
+    @using (Html.BeginForm())
+    {
+        <b>Wyszukaj po:</b> @Html.RadioButton("searchBy", "tytul", true) <text>Tytul </text>
+        @Html.RadioButton("searchBy", "kategoria") <text>Kategoria </text>
+        @Html.RadioButton("searchBy", "uczelnia") <text>Uczelnia </text>
+        @Html.TextBox("search") <input type="submit" class="create_btn2" value="szukaj" />
+    }
+
+</p>
 <table class="table">
     <thead>
         <tr>
