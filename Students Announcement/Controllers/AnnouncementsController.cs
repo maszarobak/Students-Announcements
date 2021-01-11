@@ -32,14 +32,18 @@ namespace Students_Announcement.Controllers
             if (searchBy == "tytul")
             {
                 return View( _context.Announcements.Where(x => x.tytul.StartsWith(search) || search == null).ToList());
-            } else if(searchBy == "kategoria")
+            } 
+            else if(searchBy == "kategoria")
             {
                 return View( _context.Announcements.Where(x => x.kategoria.StartsWith(search) || search == null).ToList());
-            }else if(searchBy == "uczelnia")
+
+            }
+            else if(searchBy == "uczelnia")
             {
                 return View(_context.Announcements.Where(x => x.uczelnia.StartsWith(search) || search == null).ToList());
-            } else  {
-
+            } 
+            else  
+            {
                 return View(await _context.Announcements.ToListAsync());
             } 
         }
