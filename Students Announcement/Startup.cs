@@ -37,6 +37,13 @@ namespace Students_Announcement
                     Configuration.GetConnectionString("AnnouncementConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).
                AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddAuthentication()
+                   .AddGoogle(options =>
+                   {
+                       options.ClientId = "1079788350823-tt71ksej9mp0c2epkh3i6vr4aek5tclt.apps.googleusercontent.com";
+                       options.ClientSecret = "j7q8NoDZ7DyvjLNgF-UWqkTk";
+                   });
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
