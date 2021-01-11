@@ -96,18 +96,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.wydzial)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.autor)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.tytul)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.kategoria)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.opis)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -120,18 +120,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.wydzial)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.autor)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.tytul)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.kategoria)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.opis)
-            </td>
+            </td>*@
             <td>
                 <a asp-action="Edit" class="link_click" asp-route-id="@item.id">Edytuj</a> |
                 <a asp-action="Details" class="link_click" asp-route-id="@item.id">Szczegóły</a> |
